@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRM5 Mission Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login/Register Screen -->
+        <div id="auth-screen" class="screen">
+            <div class="auth-container">
+                <h1 class="cyberpunk-title">BRM5 PLANNER</h1>
+                
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form">
+                    <h2>Login</h2>
+                    <input type="text" id="login-username" placeholder="Username" class="cyber-input">
+                    <input type="password" id="login-password" placeholder="Password" class="cyber-input">
+                    <button onclick="login()" class="cyber-btn">LOGIN</button>
+                    <p class="switch-form">Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form" class="auth-form" style="display: none;">
+                    <h2>Register</h2>
+                    <input type="text" id="reg-username" placeholder="Username" class="cyber-input">
+                    <input type="password" id="reg-password" placeholder="Password" class="cyber-input">
+                    
+                    <label class="cyber-label">Platoon:</label>
+                    <select id="reg-platoon" class="cyber-select">
+                        <option value="Red">Red Platoon</option>
+                        <option value="Green">Green Platoon</option>
+                        <option value="Blue">Blue Platoon</option>
+                        <option value="Red_Lieutenant">Red Lieutenant</option>
+                        <option value="Green_Lieutenant">Green Lieutenant</option>
+                        <option value="Blue_Lieutenant">Blue Lieutenant</option>
+                    </select>
+                    
+                    <button onclick="register()" class="cyber-btn">REGISTER</button>
+                    <p class="switch-form">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Planner Screen -->
+        <div id="planner-screen" class="screen" style="display: none;">
+            <div class="header">
+                <h1 class="cyberpunk-title">BRM5 MISSION PLANNER</h1>
+                <div class="user-info">
+                    <span id="user-display">User: <span id="current-user"></span> | Platoon: <span id="current-platoon"></span></span>
+                    <button onclick="logout()" class="cyber-btn logout-btn">LOGOUT</button>
+                </div>
+            </div>
+
+            <div class="planner-content">
+                <!-- Mission Creation (Lieutenant only) -->
+                <div id="create-section" class="create-section" style="display: none;">
+                    <h3>Create New Mission</h3>
+                    <div class="form-group">
+                        <label class="cyber-label">Mission Type:</label>
+                        <select id="mission-type" class="cyber-select">
+                            <option value="Rescue">Rescue</option>
+                            <option value="Assault">Assault</option>
+                            <option value="Recon">Recon</option>
+                            <option value="Defense">Defense</option>
+                            <option value="Custom">Custom</option>
+                        </select>
+                    </div>
+                    
+                    <div id="custom-type-group" class="form-group" style="display: none;">
+                        <input type="text" id="custom-type" placeholder="Custom Mission Type" class="cyber-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="mission-desc" placeholder="Mission Description" class="cyber-textarea"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="date" id="mission-date" class="cyber-input">
+                    </div>
+                    
+                    <button onclick="createMission()" class="cyber-btn">CREATE MISSION</button>
+                </div>
+
+                <!-- Mission List -->
+                <div class="missions-section">
+                    <h3 id="missions-title">Missions</h3>
+                    <div id="missions-list" class="missions-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Modal for Editing -->
+    <div id="edit-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Edit Mission</h3>
+            <div class="form-group">
+                <label class="cyber-label">Mission Type:</label>
+                <select id="edit-mission-type" class="cyber-select">
+                    <option value="Rescue">Rescue</option>
+                    <option value="Assault">Assault</option>
+                    <option value="Recon">Recon</option>
+                    <option value="Defense">Defense</option>
+                    <option value="Custom">Custom</option>
+                </select>
+            </div>
+            <div id="edit-custom-group" class="form-group" style="display: none;">
+                <input type="text" id="edit-custom-type" placeholder="Custom Mission Type" class="cyber-input">
+            </div>
+            <div class="form-group">
+                <textarea id="edit-mission-desc" placeholder="Mission Description" class="cyber-textarea"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="date" id="edit-mission-date" class="cyber-input">
+            </div>
+            <button onclick="saveEdit()" class="cyber-btn">SAVE CHANGES</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
