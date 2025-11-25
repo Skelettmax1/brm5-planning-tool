@@ -1,0 +1,335 @@
+/* BRM5 Planner - Cyberpunk Style CSS */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-darker: #000011;
+    --neon-red: #ff0055;
+    --neon-green: #00ff41;
+    --neon-blue: #0066ff;
+    --neon-purple: #cc00ff;
+    --text-light: #ffffff;
+    --text-gray: #cccccc;
+    --border-glow: 0 0 10px currentColor;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: var(--bg-darker);
+    color: var(--text-light);
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 102, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.1) 0%, transparent 20%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Cyberpunk Title */
+.cyberpunk-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2rem;
+    text-align: center;
+    color: var(--neon-cyan);
+    text-shadow: 
+        0 0 5px var(--neon-cyan),
+        0 0 10px var(--neon-cyan),
+        0 0 15px var(--neon-cyan),
+        0 0 20px var(--neon-cyan);
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    animation: flicker 3s infinite alternate;
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow: 
+            0 0 5px var(--neon-cyan),
+            0 0 10px var(--neon-cyan),
+            0 0 15px var(--neon-cyan),
+            0 0 20px var(--neon-cyan);
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+/* Authentication Screen */
+.screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-container {
+    background: rgba(0, 0, 20, 0.8);
+    border: 2px solid var(--neon-blue);
+    border-radius: 10px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--border-glow);
+}
+
+.auth-form h2 {
+    color: var(--neon-green);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.cyber-input, .cyber-select, .cyber-textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1rem;
+    background: rgba(0, 0, 30, 0.5);
+    border: 2px solid var(--neon-blue);
+    border-radius: 5px;
+    color: var(--text-light);
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.cyber-input:focus, .cyber-select:focus, .cyber-textarea:focus {
+    outline: none;
+    border-color: var(--neon-green);
+    box-shadow: var(--border-glow);
+}
+
+.cyber-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, var(--neon-red), var(--neon-purple));
+    border: none;
+    border-radius: 5px;
+    color: var(--text-light);
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cyber-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--neon-red);
+}
+
+.cyber-btn:active {
+    transform: translateY(0);
+}
+
+.switch-form {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--text-gray);
+}
+
+.switch-form a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.switch-form a:hover {
+    color: var(--neon-green);
+}
+
+/* Planner Screen */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 2px solid var(--neon-green);
+    border-radius: 10px;
+    background: rgba(0, 20, 0, 0.3);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logout-btn {
+    width: auto;
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.planner-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.create-section {
+    background: rgba(20, 0, 0, 0.3);
+    padding: 1.5rem;
+    border: 2px solid var(--neon-red);
+    border-radius: 10px;
+}
+
+.create-section h3 {
+    color: var(--neon-red);
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.cyber-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--neon-purple);
+}
+
+.cyber-textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.missions-section {
+    background: rgba(0, 0, 20, 0.3);
+    padding: 1.5rem;
+    border: 2px solid var(--neon-blue);
+    border-radius: 10px;
+}
+
+.missions-section h3 {
+    color: var(--neon-blue);
+    margin-bottom: 1rem;
+}
+
+.missions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mission-item {
+    background: rgba(0, 20, 40, 0.3);
+    padding: 1rem;
+    border: 1px solid var(--neon-blue);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.mission-item:hover {
+    border-color: var(--neon-green);
+    box-shadow: var(--border-glow);
+}
+
+.mission-item h4 {
+    color: var(--neon-green);
+    margin-bottom: 0.5rem;
+}
+
+.mission-details {
+    color: var(--text-gray);
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+}
+
+.mission-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.action-btn {
+    padding: 5px 10px;
+    background: rgba(0, 102, 255, 0.3);
+    border: 1px solid var(--neon-blue);
+    color: var(--text-light);
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background: rgba(0, 102, 255, 0.5);
+    box-shadow: var(--border-glow);
+}
+
+.delete-btn {
+    background: rgba(255, 0, 85, 0.3);
+    border-color: var(--neon-red);
+}
+
+.delete-btn:hover {
+    background: rgba(255, 0, 85, 0.5);
+    box-shadow: 0 0 10px var(--neon-red);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--bg-darker);
+    border: 2px solid var(--neon-purple);
+    border-radius: 10px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: var(--border-glow);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    color: var(--neon-red);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--text-light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .planner-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .cyberpunk-title {
+        font-size: 1.5rem;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
