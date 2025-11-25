@@ -1,28 +1,14 @@
 name = "brm5-planner"
-main = "src/server/index.js"
-compatibility_date = "2025-01-25"
-
-# Für moderne Cloudflare Workers mit Workers Runtime
-[env.production]
-account_id = "YOUR_ACCOUNT_ID_HERE"  # Ersetzen Sie dies mit Ihrer tatsächlichen Account ID
+type = "javascript"  # Wichtig für Service Worker Format
+account_id = "YOUR_ACCOUNT_ID"
 workers_dev = true
 
-# KV Namespace Konfiguration
-[[kv_namespaces]]
-binding = "BRM5_STORAGE"
-id = "YOUR_KV_NAMESPACE_ID"  # Dies wird nach der Erstellung des Namespaces verfügbar sein
-preview_id = "YOUR_PREVIEW_KV_NAMESPACE_ID"  # Optional, für lokale Tests
+# KV Namespace Binding
+[env.production]
+account_id = "YOUR_ACCOUNT_ID"
+kv_namespaces = [
+    { binding = "BRM5_STORAGE", id = "YOUR_ACTUAL_NAMESPACE_ID" }
+]
 
-# Umgebungsvariablen
 [vars]
-JWT_SECRET = "your-jwt-secret-key-here"  # Setzen Sie dies mit `wrangler secret put JWT_SECRET`
-
-# Falls Sie Durable Objects verwenden möchten (für fortgeschrittene Fälle)
-# [[durable_objects.bindings]]
-# name = "BRM5_PLANNER"
-# class_name = "BRM5Planner"
-
-# Falls Sie R2 Storage verwenden möchten (alternative zum KV)
-# [[r2_buckets]]
-# binding = "BRM5_BUCKET"
-# bucket_name = "brm5-planner-storage"
+JWT_SECRET = "your-jwt-secret-key"
