@@ -1,0 +1,17 @@
+{
+  "name": "brm5-planner",
+  "version": "1.0.0",
+  "description": "BRM5 Mission Planner with authentication",
+  "main": "src/server/index.js",
+  "scripts": {
+    "start": "node src/server/index.js",
+    "dev": "nodemon src/server/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2"
+  }
+}
