@@ -1,0 +1,14 @@
+name = "brm5-planner"
+main = "src/server/index.js"
+compatibility_date = "2024-01-01"
+
+[env.production]
+account_id = "your-account-id"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "BRM5_STORAGE"
+id = "your-kv-namespace-id"
+
+[vars]
+JWT_SECRET = "your-jwt-secret-key"
